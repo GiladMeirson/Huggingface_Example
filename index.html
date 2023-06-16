@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Example Hugging Face Models</title>
+        <link rel="stylesheet" href="./EZ.css">
+        <script src="./EZ.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+            crossorigin="anonymous"></script>
+        <style>
+        .header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: lightyellow;
+            border-radius: 25px;
+            margin: 15px;
+            font-size: 22px;
+        }
+        audio{
+            width: 38vw;
+        }
+        audio::-webkit-media-controls-panel{
+            background-image: linear-gradient(140deg, #EADEDB 0%, #92bcdf 50%, #77c1df 75%);        }
+        .menu {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            display: none;
+        }
+        .btn{
+            margin: 5px;
+        }
+        #translate *,#textvoice * {
+            margin-block: 15px;
+        }
+        #translate,#textvoice,#textimage,#yolo,#Mnist,#Aboutph{
+            display:none;
+        }
+        #phtranslate,#phttv,#phtextimage,#yoloph,#yoloin,#Mnistin,#Mnistph{
+            display: none;
+            text-align: center;
+            border-radius: 20px;
+            margin-block: 25px;
+        }
+        #phttv,#phtranslate{
+            max-height: 155px;
+        }
+        #PHIN{
+            margin-block: 25px;
+        }
+        img{
+            border-radius: 25px;
+        }
+
+        ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.gray {
+    /* border: 1px solid #e7e7e7; */
+    background-color: lightyellow;
+    width: 95%;
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+ul.horizontal li {
+    float: left;
+}
+ul.gray li a.active {
+    color: white;
+    background-color: #ebcc1b;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+ul.gray li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.header p {
+    font-size: 12px;
+    margin-block: 5px;
+}
+body{
+    background-color: rgb(246, 227, 248);
+    padding-bottom: 50px;
+}
+#logo{
+    width: 75px;
+    height: 75px;
+}
+#h1logo{
+    display: flex;
+    align-items: center;
+}
+#Aboutph{
+    padding: 15px;
+}
+#Aboutph h1 {
+    font-size: 28px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+#Aboutph h2{
+    font-size: 24px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+#Aboutph  p {
+    font-size: 20px;
+    margin-bottom: 45px;
+}
+#Aboutph #rro p {
+    width: 66%;
+}
+#rro{
+    justify-content: space-between;
+
+}
+        
+    </style>
+        <script src="./index.js"></script>
+    </head>
+    <body>
+        <div class="header btn-shadow">
+            <h1 id="h1logo">Example Hugging Face AI Models <img id="logo"
+                    src="./assets/hf-logo.png" alt></h1>
+            
+            <ul class="horizontal gray">
+                <li><a id="e1" onclick="Activtions(this)"
+                        href="javascript:void(0)">Translate Example</a></li>
+                <li><a id="e2" onclick="Activtions(this)"
+                        href="javascript:void(0)">Text to voice Example</a></li>
+                <li><a id="e3" onclick="Activtions(this)"
+                        href="javascript:void(0)">Text to image Example</a></li>
+                <li><a id="e4" onclick="Activtions(this)"
+                        href="javascript:void(0)">Yolo Example</a></li>
+                <li><a id="e5" onclick="Activtions(this)"
+                        href="javascript:void(0)">Image Variations Example</a></li>
+                <li class="rightli" style="float:right"><a class="active"
+                        onclick="Activtions(this)"
+                        href="javascript:void(0)">About</a></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <div class="sec">
+                <h2>Text input Example:</h2>
+                <button id="e1" onclick="ClickMenue(this.id)" class="btn">Translate
+                    Example</button>
+                <button id="e2" onclick="ClickMenue(this.id)" class="btn">Text
+                    to voice Example</button>
+                <button id="e3" onclick="ClickMenue(this.id)" class="btn">Text
+                    to image Example</button>
+            </div>
+            <div class="sec">
+                <h2>image input Example:</h2>
+                <button id="e4" onclick="ClickMenue(this.id)" class="btn">Yolo
+                    Example</button>
+                <button onclick="ClickMenue(this.id)" id="e5" class="btn">Image
+                    Variations Example</button>
+            </div>
+
+        </div>
+        <div id="PHIN" class="PHIN wrap-C">
+            <div id="translate">
+                <div class="wrap-C">
+                    <input style="width: 38vw;" type="text" id="textIN"
+                        placeholder="English text...">
+                    <select name id="LangIN">
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ru">Russian</option>
+                    </select>
+                    <button onclick="Translate()" class="btn-long">Translate</button>
+                </div>
+                <div id="phtranslate" class="wrap-C d3-shadow box2">
+
+                </div>
+            </div>
+            <div id="textvoice">
+                <div class="wrap-C">
+                    <input style="width: 38vw;" type="text" id="TextIN2"
+                        placeholder="English text...">
+                    <select name id="VoiceIN">
+                        <option value="CLB (female)">CLB (female)</option>
+                        <option value="BDL (male)">BDL (male)</option>
+                        <option value="RMS (male)">RMS (male)</option>
+                    </select>
+                    <button onclick="Convert()" class="btn-long">Convert</button>
+                </div>
+                <div id="phttv" class="wrap-C d3-shadow box2">
+                </div>
+
+            </div>
+
+            <div id="textimage">
+                <div class="wrap-C">
+                    <input style="width: 39vw; margin-bottom: 25px;" type="text"
+                        id="TextIN3" placeholder="English text...">
+                    <button onclick="Generate()" class="btn-long">Generate</button>
+                </div>
+                <div id="phtextimage" class="wrap-C d3-shadow box2">
+                </div>
+
+            </div>
+
+            <div id="yolo">
+                <div class="wrap-C">
+                    <input style="margin-block: 25px;"
+                        onchange="fileToBase64(this,cb64)" type="file"
+                        id="yoloIN">
+
+                    <div id="yoloin">
+
+                    </div>
+                    <button onclick="Classify()" class="btn-long">Classify</button>
+
+                    <div id="yoloph" class="wrap-C d3-shadow"
+                        style="padding-inline: 15px;border-radius: 25px;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Mnist">
+                <div class="wrap-C">
+                    <input style="margin-block: 25px;"
+                        onchange="fileToBase64(this,cb642)" type="file"
+                        id="MnistIN">
+
+                    <div id="Mnistin">
+
+                    </div>
+                    <button onclick="Classify2()" class="btn-long">Generate</button>
+
+                    <div id="Mnistph" class="wrap-C d3-shadow"
+                        style="padding-inline: 15px;border-radius: 25px;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Aboutph">
+                <h1>About:</h1>
+                <p><a href="https://huggingface.co/">Hugging Face</a> is an
+                    American company that develops tools for building
+                    applications using machine learning. It is most notable for
+                    its transformers library built for natural language
+                    processing applications and its platform that allows users
+                    to share machine learning models and datasets.</p>
+                <h2>Transformers Library:</h2>
+                <div id="rro" class="wrap-R">
+                    <p>The Transformers library is a Python package that
+                        contains open-source implementations of transformer
+                        models for text, image, and audio tasks. It is
+                        compatible with the PyTorch, TensorFlow and JAX deep
+                        learning libraries and includes implementations of
+                        notable models like BERT and GPT-2. The library was
+                        originally called "pytorch-pretrained-bert" which was
+                        then renamed to "pytorch-transformers" and finally
+                        "transformers"</p>
+                    <div class="wrap-C">
+                        <img src="./assets/ex.png" alt>
+                    </div>
+
+                </div>
+
+                <h2>Spaces in HuggingFace:</h2>
+                <p style="width: 66%;">This is a way to create an interface in HuggingFace that
+                    provides an end point for the service that is written for
+                    you in the app.py file. You can visit all the spices I
+                    created by <a href="https://huggingface.co/GiladtheFixer">clicking
+                        here</a></p>
+
+                <h2>Interface With Gradio:</h2>
+                <div style="justify-content: space-between;" class="wrap-R">
+                    <p style="width: 66%;"><a href="https://gradio.app/">Gradio</a>
+                        can be installed
+                        with pip. Creating a Gradio interface only requires
+                        adding a
+                        couple lines of code to your project.
+                        You can choose from a variety of interface types to
+                        interface your function.
+                        A Gradio interface can automatically generate a public
+                        link
+                        you can share with colleagues that lets them interact
+                        with
+                        the model on your computer remotely from their own
+                        devices.We will apply the lines of code that call the
+                        interface to space in HuggingFace and we will
+                        automatically receive a host for our API that we can use
+                        from any external client platform</p>
+                    <img style="height: 200px;" src="./assets/ex2.png" alt>
+                </div>
+
+            </div>
+
+        </div>
+        <span style="position: fixed; bottom: 18px; right: 25px; font-size: 15px;">Create By &#169; <a href="https://giladmeirson.github.io/Gilad_Meirson_website/">Gilad Meirson </a></span>
+    </body>
+</html>
